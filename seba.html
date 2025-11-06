@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রবাসী হেল্প কেয়ার - সম্পূর্ণ পরিষেবা প্ল্যাটফর্ম</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* কাস্টম কালার ভেরিয়েবল */
+        :root {
+            --primary-color: #004D40; /* গাঢ় ডিপ টিল */
+            --accent-color: #FFB300; /* উজ্জ্বল কমলা */
+            --secondary-bg: #F5F5F5;
+            --emergency-red: #D32F2F;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif; /* Poppins ফন্ট ব্যবহার */
+            background-color: var(--secondary-bg);
+            padding-top: 65px;
+        }
+
+        /* নেভিগেশন বার */
+        .custom-navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* আরও গভীর শ্যাডো */
+        }
+        .custom-navbar .nav-link {
+            color: white !important;
+            font-weight: 600;
+        }
+
+        /* হিরো সেকশন */
+        .hero-section {
+            background-color: var(--primary-color);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            min-height: 18vh;
+            /* হালকা টেক্সচার যোগ */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 10%, transparent 10%);
+            background-size: 30px 30px;
+        }
+
+        /* সার্চ বার এরিয়া */
+        .search-area {
+            padding: 10px 0;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        /* SOS বাটন */
+        .sos-button {
+            background-color: var(--emergency-red);
+            border-color: var(--emergency-red);
+            font-size: 1.3rem;
+        }
+
+        /* সার্ভিস কার্ড (উন্নত ডিজাইন) */
+        .service-card {
+            border: none;
+            border-radius: 12px; /* সামান্য বেশি রাউন্ডেড */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-decoration: none;
+            color: #333;
+            background-color: white;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* আকর্ষণীয় শ্যাডো */
+            cursor: pointer; /* ক্লিকযোগ্যতার ইঙ্গিত */
+            display: block; /* A ট্যাগ কে ব্লক লেভেল করা হয়েছে */
+            padding: 10px;
+        }
+        .service-card:hover {
+            transform: translateY(-8px); /* হোভারে আরও বেশি উপরে উঠবে */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* প্রিমিয়াম 3D শ্যাডো */
+        }
+
+        .service-icon {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+        .service-card.emergency .service-icon {
+            color: var(--emergency-red);
+        }
+        .service-card p {
+            font-size: 0.85rem;
+            font-weight: 600; /* ফন্ট আরও বোল্ড */
+        }
+
+        /* কাস্টম হেডিং */
+        .custom-heading {
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        /* ফুটার */
+        .custom-footer {
+            background-color: #1a1a1a;
+        }
+
+        /* --- নতুন মোডাল স্টাইল --- */
+        .custom-modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom: 5px solid var(--accent-color);
+        }
+        .custom-modal-header .btn-close {
+            filter: invert(1);
+        }
+        .modal-body ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .modal-body .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .modal-body .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #333;
+        }
+        .modal-body .list-group-item {
+            border: none;
+            border-left: 5px solid var(--accent-color);
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .modal-body .list-group-item strong {
+            color: var(--primary-color);
+        }
+        /* ব্যাক টু টপ বাটন স্টাইল */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">প্রবাসী হেল্প কেয়ার</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#emergency">জরুরি</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#health">স্বাস্থ্য</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#legal">আইনি ও সুরক্ষা</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#admin">প্রশাসন ও অর্থনীতি</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#daily">দৈনন্দিন</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section text-center d-flex align-items-center justify-content-center">
+        <div class="container text-white">
+            <h1 class="display-5 fw-bold mb-3">সৌদি আরবে প্রবাসীদের জন্য নির্ভরযোগ্য সহায়তা</h1>
+            <p class="lead mb-4">এক ক্লিকেই সকল জরুরি ও গুরুত্বপূর্ণ পরিষেবা</p>
+            <a href="tel:911" class="btn btn-danger btn-lg mt-4 shadow-lg sos-button" onclick="logCall('911-SOS')">
+                <i class="fas fa-phone-alt me-2"></i> SOS - 911 (জরুরি কল করুন)
+            </a>
+        </div>
+    </header>
+
+    <section class="search-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="input-group input-group-lg shadow-sm">
+                        <input type="text" class="form-control" id="serviceSearch" placeholder="কী খুঁজছেন? (যেমন: শ্রম আইন, অ্যাম্বুলেন্স, বিল)" onkeyup="filterServices()">
+                        <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 primary-text">সকল গুরুত্বপূর্ণ পরিষেবা সমূহ</h2>
+            
+            <h3 id="emergency" class="text-center custom-heading mt-4 mb-4">ইমার্জেন্সি সার্ভিস 🚨</h3>
+            <div class="row g-4 justify-content-center" id="serviceList">
+                
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="জরুরি সমন্বিত পুলিশ ফায়ার অ্যাম্বুলেন্স" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:911" class="service-card emergency shadow" data-service="911_combined"><i class="fas fa-bullhorn service-icon"></i><p class="mb-0 fw-bold">সমন্বিত জরুরি - 911</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="পুলিশ নিরাপত্তা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:999" class="service-card emergency shadow" data-service="police_999"><i class="fas fa-user-shield service-icon"></i><p class="mb-0 fw-bold">পুলিশ - 999</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="অ্যাম্বুলেন্স স্বাস্থ্য" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:997" class="service-card emergency shadow" data-service="ambulance_997"><i class="fas fa-ambulance service-icon"></i><p class="mb-0 fw-bold">অ্যাম্বুলেন্স - 997</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ফায়ার আগুন" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:998" class="service-card emergency shadow" data-service="fire_998"><i class="fas fa-fire service-icon"></i><p class="mb-0 fw-bold">ফায়ার সার্ভিস - 998</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ট্র্যাফিক গাড়ি দুর্ঘটনা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:993" class="service-card emergency shadow" data-service="traffic_993"><i class="fas fa-traffic-light service-icon"></i><p class="mb-0 fw-bold">ট্র্যাফিক পুলিশ - 993</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="বর্ডার গার্ড সমুদ্র" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:995" class="service-card emergency shadow" data-service="border_995"><i class="fas fa-ship service-icon"></i><p class="mb-0 fw-bold">বর্ডার গার্ড (সমুদ্র) - 995</p></a>
+                </div>
+                 <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="বিদ্যুৎ বিভ্রাট রিপোর্ট" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:933" class="service-card emergency shadow" data-service="electricity_933"><i class="fas fa-plug-circle-xmark service-icon"></i><p class="mb-0 fw-bold">বিদ্যুৎ বিভ্রাট - 933</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="পরিবেশ দূষণ" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:988" class="service-card emergency shadow" data-service="environment_988"><i class="fas fa-leaf service-icon"></i><p class="mb-0 fw-bold">পরিবেশ দূষণ রিপোর্ট - 988</p></a>
+                </div>
+
+                <div class="w-100"><h3 id="health" class="text-center custom-heading mt-5 mb-4">স্বাস্থ্য ও কল্যাণ 🏥</h3></div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="হাসপাতাল ক্লিনিক ম্যাপ" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="#" class="service-card shadow" data-service="moh_hospital_map"><i class="fas fa-hospital service-icon"></i><p class="mb-0 fw-bold">সরকারি হাসপাতাল ম্যাপ</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="স্বাস্থ্য হটলাইন MOH" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:937" class="service-card shadow" data-service="moh_hotline_937"><i class="fas fa-headset service-icon"></i><p class="mb-0 fw-bold">MOH স্বাস্থ্য হটলাইন - 937</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="মানসিক স্বাস্থ্য" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:937" class="service-card shadow" data-service="mental_health"><i class="fas fa-brain service-icon"></i><p class="mb-0 fw-bold">মানসিক স্বাস্থ্য সহায়তা</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="স্বাস্থ্য বীমা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.cchi.gov.sa/en/Pages/default.aspx" target="_blank" class="service-card shadow" data-service="health_insurance"><i class="fas fa-heart-pulse service-icon"></i><p class="mb-0 fw-bold">স্বাস্থ্য বীমা যাচাই</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ফার্মেসি ঔষধ" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.google.com/maps/search/Pharmacy+near+me" class="service-card shadow" data-service="pharmacy_map"><i class="fas fa-prescription-bottle-medical service-icon"></i><p class="mb-0 fw-bold">নিকটস্থ ফার্মেসি</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="স্বেচ্ছাসেবক" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.svplatform.sa/" target="_blank" class="service-card shadow" data-service="volunteer_platform"><i class="fas fa-hand-holding-heart service-icon"></i><p class="mb-0 fw-bold">স্বেচ্ছাসেবক প্ল্যাটফর্ম</p></a>
+                </div>
+                
+                <div class="w-100"><h3 id="legal" class="text-center custom-heading mt-5 mb-4">আইনি ও সুরক্ষা 🛡️</h3></div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="আবশার ইকামা ভিসা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.absher.sa/" target="_blank" class="service-card shadow" data-service="absher_services"><i class="fas fa-passport service-icon"></i><p class="mb-0 fw-bold">আবশার (Absher) সেবা</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="শ্রম আইন অভিযোগ" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:19911" class="service-card shadow" data-service="labor_hotline_19911"><i class="fas fa-gavel service-icon"></i><p class="mb-0 fw-bold">শ্রম আইন হটলাইন - 19911</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="দূতাবাস কনস্যুলেট" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="#" class="service-card shadow" data-service="embassy_consulate"><i class="fas fa-flag service-icon"></i><p class="mb-0 fw-bold">দূতাবাস ও কনস্যুলেট</p></a>
+                </div>
+                 <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="নারী শিশু সুরক্ষা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:1919" class="service-card shadow" data-service="family_protection_1919"><i class="fas fa-child-reaching service-icon"></i><p class="mb-0 fw-bold">নারী ও শিশু সুরক্ষা - 1919</p></a>
+                </div>
+                 <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="সরকারি অভিযোগ" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://tawasul.gov.sa/en/contact-us" target="_blank" class="service-card shadow" data-service="gov_complaint_tawasul"><i class="fas fa-comments-question service-icon"></i><p class="mb-0 fw-bold">সরকারি অভিযোগ (তাওয়াসুল)</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="মানবাধিকার" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://hrc.gov.sa/en" target="_blank" class="service-card shadow" data-service="human_rights_commission"><i class="fas fa-hands-holding-circle service-icon"></i><p class="mb-0 fw-bold">মানবাধিকার কমিশন</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="জন্ম মৃত্যু নিবন্ধন" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://moi.gov.sa/wps/portal/Home/MOI/GeneralService/DeathCertificate/!" target="_blank" class="service-card shadow" data-service="birth_death_registration"><i class="fas fa-baby service-icon"></i><p class="mb-0 fw-bold">জন্ম/মৃত্যু নিবন্ধন</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="হারানো জিনিসপত্র" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.absher.sa/" target="_blank" class="service-card shadow" data-service="lost_items"><i class="fas fa-magnifying-glass-location service-icon"></i><p class="mb-0 fw-bold">হারানো জিনিসপত্র</p></a>
+                </div>
+
+                <div class="w-100"><h3 id="admin" class="text-center custom-heading mt-5 mb-4">প্রশাসন ও অর্থনীতি 💰</h3></div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="রেমিট্যান্স ব্যাংক" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.sama.gov.sa/" target="_blank" class="service-card shadow" data-service="remittance_bank"><i class="fas fa-money-bill-transfer service-icon"></i><p class="mb-0 fw-bold">রেমিট্যান্স ও ব্যাংক তথ্য</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ট্যাক্স ভ্যাট ZATCA" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://zatca.gov.sa/en/Pages/default.aspx" target="_blank" class="service-card shadow" data-service="tax_vat_zatca"><i class="fas fa-percent service-icon"></i><p class="mb-0 fw-bold">ট্যাক্স/ভ্যাট তথ্য (ZATCA)</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ক্রেডিট রিপোর্ট SIMAH" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.simah.com/en" target="_blank" class="service-card shadow" data-service="credit_report_simah"><i class="fas fa-file-invoice-dollar service-icon"></i><p class="mb-0 fw-bold">ক্রেডিট রিপোর্ট (SIMAH)</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="জাকাত দান Ehsan" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://ehsan.sa/home" target="_blank" class="service-card shadow" data-service="zakat_ehsan"><i class="fas fa-hand-holding-dollar service-icon"></i><p class="mb-0 fw-bold">জাকাত ও দান (Ehsan)</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="যানবাহন বীমা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.sama.gov.sa/en-us/insur/pages/vehins.aspx" target="_blank" class="service-card shadow" data-service="vehicle_insurance"><i class="fas fa-car-on service-icon"></i><p class="mb-0 fw-bold">যানবাহন বীমা যাচাই</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ভিসা ইকামা ফি" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.absher.sa/" target="_blank" class="service-card shadow" data-service="visa_iqama_fee"><i class="fas fa-calculator service-icon"></i><p class="mb-0 fw-bold">ভিসা/ইকামা ফি চেক</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="টেলিযোগাযোগ অভিযোগ CITC" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.citc.gov.sa/en/Pages/default.aspx" target="_blank" class="service-card shadow" data-service="citc_complaint"><i class="fas fa-signal service-icon"></i><p class="mb-0 fw-bold">টেলিযোগাযোগ অভিযোগ</p></a>
+                </div>
+
+                <div class="w-100"><h3 id="daily" class="text-center custom-heading mt-5 mb-4">দৈনন্দিন জীবন ও স্থানীয় সেবা 🏡</h3></div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="পৌরসভা রাস্তা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="tel:940" class="service-card shadow" data-service="municipality_940"><i class="fas fa-city service-icon"></i><p class="mb-0 fw-bold">পৌরসভা পরিষেবা - 940</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="বিদ্যুৎ পানি বিল" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.se.com.sa/" target="_blank" class="service-card shadow" data-service="utility_bill"><i class="fas fa-lightbulb service-icon"></i><p class="mb-0 fw-bold">বিদ্যুৎ/পানি বিল</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ইন্টারনেট ওয়াইফাই" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.citc.gov.sa/en/Pages/default.aspx" target="_blank" class="service-card shadow" data-service="internet_wifi"><i class="fas fa-wifi service-icon"></i><p class="mb-0 fw-bold">টেলিফোন/ইন্টারনেট</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="ফুড ডেলিভারি" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="#" class="service-card shadow" data-service="food_delivery"><i class="fas fa-utensils service-icon"></i><p class="mb-0 fw-bold">ফুড ডেলিভারি অ্যাপস</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="কুরিয়ার পার্সেল ট্র্যাকিং" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://splonline.com.sa/en/home/" target="_blank" class="service-card shadow" data-service="courier_parcel"><i class="fas fa-box-open service-icon"></i><p class="mb-0 fw-bold">কুরিয়ার ও পার্সেল</p></a>
+                </div>
+                 <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="আবহাওয়া সতর্কতা" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://ncm.gov.sa/en" target="_blank" class="service-card shadow" data-service="weather_alert"><i class="fas fa-cloud-sun-rain service-icon"></i><p class="mb-0 fw-bold">আবহাওয়া ও সতর্কতা</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="শিক্ষা স্কুল নিবন্ধন" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.moe.gov.sa/en/Pages/default.aspx" target="_blank" class="service-card shadow" data-service="education_registration"><i class="fas fa-graduation-cap service-icon"></i><p class="mb-0 fw-bold">শিক্ষা ও স্কুল নিবন্ধন</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="নামাজ কিবলাহ" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="#" class="service-card shadow" data-service="prayer_qibla"><i class="fas fa-mosque service-icon"></i><p class="mb-0 fw-bold">নামাজ ও কিবলাহ সময়</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="রেলওয়ে ট্রেন ভ্রমণ" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.sar.com.sa/en" target="_blank" class="service-card shadow" data-service="railway_sar"><i class="fas fa-train service-icon"></i><p class="mb-0 fw-bold">জাতীয় রেলওয়ে (SAR)</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="বিনোদন ইভেন্ট" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.gea.gov.sa/en" target="_blank" class="service-card shadow" data-service="entertainment_gea"><i class="fas fa-ticket service-icon"></i><p class="mb-0 fw-bold">বিনোদন ও ইভেন্ট</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="পণ্য মানদণ্ড SASO" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://saso.gov.sa/en/pages/default.aspx" target="_blank" class="service-card shadow" data-service="saso_standards"><i class="fas fa-certificate service-icon"></i><p class="mb-0 fw-bold">পণ্য মানদণ্ড (SASO)</p></a>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 service-item" data-keywords="সৌদি ঐতিহ্য পর্যটন" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <a href="https://www.visitsaudi.com/en" target="_blank" class="service-card shadow" data-service="tourism_visitsaudi"><i class="fas fa-landmark service-icon"></i><p class="mb-0 fw-bold">সৌদি ঐতিহ্য ও স্থান</p></a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer class="py-4 custom-footer text-white">
+        <div class="container text-center">
+            <p class="mb-1">জরুরি সেবার জন্য ৯১১/৯৯৯ ডায়াল করুন।</p>
+            <p class="mb-0">© 2024 প্রবাসী হেল্প কেয়ার। সকল অধিকার সংরক্ষিত।</p>
+        </div>
+    </footer>
+    
+    <button onclick="topFunction()" id="backToTop" title="উপরে যান">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header custom-modal-header">
+                    <h5 class="modal-title" id="serviceModalLabel">বিস্তারিত পরিষেবা</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBodyContent">
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                    <a href="#" id="modalPrimaryAction" class="btn btn-primary" target="_blank" style="display: none;"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+        <script>
+        // ব্যাক টু টপ ফাংশন (পরিবর্তন করা হয়নি)
+        let mybutton = document.getElementById("backToTop");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // কল ট্র্যাকিং (উদাহরণস্বরূপ) (পরিবর্তন করা হয়নি)
+        function logCall(service) {
+            console.log("User clicked to call:", service);
+        }
+
+        // সার্ভিস সার্চ ফিল্টার ফাংশন (পরিবর্তন করা হয়নি)
+        function filterServices() {
+            const input = document.getElementById('serviceSearch');
+            const filter = input.value.toUpperCase();
+            const serviceList = document.getElementById('serviceList');
+            const services = serviceList.getElementsByClassName('service-item');
+            
+            for (let i = 0; i < services.length; i++) {
+                const card = services[i].getElementsByClassName('service-card')[0];
+                const textValue = card.getElementsByTagName('p')[0].innerText;
+                const keywords = services[i].getAttribute('data-keywords');
+                
+                if (textValue.toUpperCase().indexOf(filter) > -1 || (keywords && keywords.toUpperCase().indexOf(filter) > -1)) {
+                    services[i].style.display = "";
+                } else {
+                    services[i].style.display = "none";
+                }
+            }
+            // updateSectionVisibility();
+        }
+
+
+        /* --- মোডাল ডেটা ও লজিক শুরু (আপনার অনুরোধ অনুযায়ী আপডেট) --- */
+
+        // ১. প্রতিটি সার্ভিসের বিস্তারিত ডেটা
+        const serviceData = {
+            "911_combined": {
+                title: "সমন্বিত জরুরি পরিষেবা (৯১১)",
+                icon: "fas fa-bullhorn",
+                html: `<p class="lead">সৌদি আরবে ৯১১ ডায়াল করলে আপনি পুলিশ, অ্যাম্বুলেন্স, এবং ফায়ার সার্ভিসের সমন্বিত জরুরি কল সেন্টারে পৌঁছাবেন।</p><p class="fw-bold">🚨 কখন কাকে কল করবেন?</p><ul class="list-group list-group-flush"><li class="list-group-item"><i class="fas fa-square-phone-flip text-danger me-2"></i> **৯৯৯:** যেকোনো অপরাধমূলক বা নিরাপত্তার সমস্যা।</li><li class="list-group-item"><i class="fas fa-heart-circle-bolt text-danger me-2"></i> **৯৯৭:** জীবন-হুমকির স্বাস্থ্য জরুরি অবস্থা (অ্যাম্বুলেন্স)।</li><li class="list-group-item"><i class="fas fa-fire-extinguisher text-danger me-2"></i> **৯৯৮:** আগুন লাগলে বা উদ্ধারের প্রয়োজন হলে (ফায়ার)।</li></ul><p class="mt-3">**আরবিতে জরুরি বার্তা:** "মুসায়াদা সারেয়া" (عاجل مساعدة) মানে "দ্রুত সাহায্য দরকার"।</p>`,
+                primaryAction: { text: "জরুরি কল করুন - 911", href: "tel:911" }
+            },
+            "police_999": {
+                title: "পুলিশ (৯৯৯) ও নিরাপত্তা সহায়তা",
+                icon: "fas fa-user-shield",
+                html: `<p>আপনি যদি কোনো অপরাধের শিকার হন বা সন্দেহজনক কার্যকলাপ দেখেন, তাহলে ৯৯৯ ডায়াল করুন।</p><p class="fw-bold">অতিরিক্ত সেবা:</p><ul class="list-group list-group-flush"><li class="list-group-item"><i class="fas fa-map-location-dot me-2"></i> নিকটস্থ থানা খুঁজুন (Google Maps): <a href="https://www.google.com/maps/search/police+station+near+me" target="_blank">এখানে ক্লিক করুন</a></li><li class="list-group-item"><i class="fas fa-shield-halved me-2"></i> অনলাইন নিরাপত্তা অভিযোগ পোর্টাল: <a href="https://moi.gov.sa/en" target="_blank">অভ্যন্তরীণ মন্ত্রণালয় (MOI)</a></li></ul>`,
+                primaryAction: { text: "পুলিশকে কল করুন - 999", href: "tel:999" }
+            },
+            
+            // --- আপনার দেওয়া হসপিটাল নম্বর ও তথ্য এখানে যুক্ত করা হলো ---
+            
+            "ambulance_997": {
+                title: "অ্যাম্বুলেন্স (৯৯৭) ও স্বাস্থ্য জরুরি",
+                icon: "fas fa-ambulance",
+                html: `
+                    <p class="text-danger">৯৯৭ এ কল করার আগে আক্রান্ত ব্যক্তির অবস্থান ও অবস্থা পরিষ্কারভাবে প্রস্তুত রাখুন।</p>
+                    <p class="fw-bold">📞 প্রধান জরুরি হাসপাতালের হটলাইন:</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">**রিয়াদ:** কিং ফাহাদ মেডিক্যাল সিটি: <a href="tel:+966112889999">+966 11 288 9999</a></li>
+                                <li class="list-group-item">**জেদ্দা:** কিং আব্দুলআজিজ হাসপাতাল: <a href="tel:+966126388000">+966 12 638 8000</a></li>
+                                <li class="list-group-item">**মক্কা:** কিং আব্দুল্লাহ মেডিকেল সিটি: <a href="tel:+966125666888">+966 12 566 6888</a></li>
+                                <li class="list-group-item">**মদিনা:** কিং ফাহাদ হাসপাতাল: <a href="tel:+966148461500">+966 14 846 1500</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">**দাম্মাম:** কিং ফাহাদ স্পেশালিস্ট হাসপাতাল: <a href="tel:+966138442700">+966 13 844 2700</a></li>
+                                <li class="list-group-item">**খোবার:** কিং ফাহাদ ইউনিভার্সিটি হাসপাতাল: <a href="tel:+966138983333">+966 13 898 3333</a></li>
+                                <li class="list-group-item">**আভা:** আসীর সেন্ট্রাল হাসপাতাল: <a href="tel:+966172255555">+966 17 225 5555</a></li>
+                                <li class="list-group-item">**তাইফ:** কিং আব্দুল আজিজ হাসপাতাল: <a href="tel:+966127333333">+966 12 733 3333</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-secondary small">দ্রষ্টব্য: সরাসরি হাসপাতালের নম্বরে যোগাযোগ করতে সমস্যা হলে, দ্রুত ৯৯৭ এ কল করুন।</p>
+                `,
+                primaryAction: { text: "অ্যাম্বুলেন্সে কল করুন - 997", href: "tel:997" }
+            },
+            
+            "moh_hospital_map": {
+                title: "সরকারি হাসপাতাল ও ক্লিনিক ম্যাপ (সরাসরি কল)",
+                icon: "fas fa-hospital",
+                html: `
+                    <p class="lead">আপনার দেওয়া তথ্য সহ সৌদি আরবের প্রধান সরকারি হাসপাতালগুলোর তালিকা ও সরাসরি কল লিঙ্ক:</p>
+                    <div class="list-group">
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>রিয়াদ:</strong> কিং ফাহাদ মেডিকেল সিটি (KFMC) <a href="tel:+966112889999" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>রিয়াদ:</strong> কিং ফয়সাল স্পেশালিস্ট হাসপাতাল (KFSH&RC) <a href="tel:+966114647272" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>রিয়াদ:</strong> কিং আব্দুল আজিজ মেডিকেল সিটি (KAMC) <a href="tel:+966118011111" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>রিয়াদ:</strong> কিং সৌদ মেডিকেল সিটি (KSMC) <a href="tel:+966114355555" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>রিয়াদ:</strong> প্রিন্স সুলতান মিলিটারি মেডিকেল সিটি (PSMMC) <a href="tel:+966114777714" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>রিয়াদ:</strong> কিংসালমান বিন আব্দুল আজিজ হাসপাতাল <a href="tel:+966112788800" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>রিয়াদ:</strong> কিং খালিদ ইউনিভার্সিটি হাসপাতাল <a href="tel:+966114679100" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>মক্কা:</strong> কিং আব্দুল্লাহ মেডিকেল সিটি (KAMC) <a href="tel:+966125666888" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>জেদ্দা:</strong> কিং আব্দুল আজিজ হাসপাতাল <a href="tel:+966126388000" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>জেদ্দা:</strong> কিং ফাহাদ হাসপাতাল <a href="tel:+966126606111" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>দাম্মাম:</strong> কিং ফাহাদ স্পেশালিস্ট হাসপাতাল <a href="tel:+966138442700" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>মদিনা:</strong> কিং ফাহাদ হাসপাতাল <a href="tel:+966148461500" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>আভা:</strong> আসীর সেন্ট্রাল হাসপাতাল <a href="tel:+966172255555" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>তাইফ:</strong> কিং আব্দুল আজিজ হাসপাতাল <a href="tel:+966127333333" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>আল-ক্বাতীফ:</strong> আল-ক্বাতীফ সেন্ট্রাল হাসপাতাল <a href="tel:+966138361000" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>খোবার:</strong> কিং ফাহাদ ইউনিভার্সিটি হাসপাতাল <a href="tel:+966138983333" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                        <li class="list-group-item"><i class="fas fa-location-dot me-2"></i> <strong>হায়েল:</strong> কিং খালিদ হাসপাতাল <a href="tel:+966165322600" class="float-end btn btn-sm btn-primary"><i class="fas fa-phone"></i> কল করুন</a></li>
+                    </div>
+                    <p class="mt-3">মন্ত্রণালয়ের অফিসিয়াল ম্যাপের জন্য নিচের বাটনে ক্লিক করুন।</p>
+                `,
+                primaryAction: { text: "MOH ইন্টারেক্টিভ ম্যাপ দেখুন", href: "https://www.moh.gov.sa/en/eServices/interactive-maps/Pages/default.aspx" }
+            },
+            
+            // --- অন্যান্য মোডাল ডেটা (পরিবর্তন করা হয়নি) ---
+            
+            "absher_services": {
+                title: "আবশার (Absher) দ্রুত সেবা অ্যাক্সেস",
+                icon: "fas fa-passport",
+                html: `<p class="lead">আবশার এর মাধ্যমে প্রবাসীদের জন্য সবচেয়ে প্রয়োজনীয় সেবাগুলোর সরাসরি লিঙ্ক:</p><div class="list-group"><a href="https://www.absher.sa/portal/site/Absher/IqamaExpiryDate" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-calendar-alt me-2"></i> <strong>ইকামা মেয়াদ চেক</strong></a><a href="https://www.absher.sa/portal/site/Absher/TrafficViolations" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-car-crash me-2"></i> <strong>ট্র্যাফিক ভায়োলেশন চেক</strong></a><a href="https://www.absher.sa/portal/site/Absher/Hajj-and-Umrah" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-kaaba me-2"></i> <strong>হজ ও উমরাহ সেবা</strong></a><a href="https://www.absher.sa/portal/site/Absher/ExitReentryVisaStatus" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-plane-departure me-2"></i> <strong>এক্সিট/রি-এন্ট্রি ভিসা স্ট্যাটাস</strong></a></div>`,
+                primaryAction: { text: "আবশার পোর্টালে যান", href: "https://www.absher.sa/" }
+            },
+            "labor_hotline_19911": {
+                title: "শ্রম আইন হটলাইন (১৯৯১১) ও অভিযোগ প্রক্রিয়া",
+                icon: "fas fa-gavel",
+                html: `<p class="lead">শ্রমিক হিসেবে আপনার অধিকার বা অভিযোগ জানানোর জন্য:</p><p class="fw-bold">অভিযোগের প্রকারভেদ:</p><ul class="list-group list-group-flush"><li class="list-group-item"><i class="fas fa-sack-dollar me-2"></i> **বেতন সমস্যা:** বেতন/পারিশ্রমিক বাকি থাকলে বা কম পেলে।</li><li class="list-group-item"><i class="fas fa-calendar-check me-2"></i> **চুক্তি লঙ্ঘন:** চুক্তির শর্ত পূরণ না হলে।</li><li class="list-group-item"><i class="fas fa-clock me-2"></i> **অতিরিক্ত কর্মঘণ্টা:** আইন নির্ধারিত সময়ের বেশি কাজ করানো হলে।</li></ul><p class="mt-3">শ্রম মন্ত্রণালয়ের (MHRSD) অফিসিয়াল পোর্টালে অভিযোগ জানাতে পারেন।</p>`,
+                primaryAction: { text: "শ্রম মন্ত্রণালয় অভিযোগ পোর্টালে যান", href: "https://www.hrsd.gov.sa/en" }
+            },
+            "remittance_bank": {
+                title: "রেমিট্যান্স ও ব্যাংক তথ্য",
+                icon: "fas fa-money-bill-transfer",
+                html: `<p class="lead">দ্রুত ও নিরাপদে টাকা পাঠানোর জন্য বিশ্বস্ত প্রতিষ্ঠানসমূহ:</p><div class="list-group"><a href="https://www.alrajhibank.com.sa/en" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-building-columns me-2"></i> **আল রাজি ব্যাংক (Al-Rajhi Bank):** দ্রুত ট্রান্সফার সেবা।</a><a href="https://www.saudimoneytransfer.com.sa/en" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-exchange-alt me-2"></i> **টেলিমনি/এসএনবি (TeleMoney/SNB):** রেমিট্যান্স ট্র্যাকিং।</a><a href="https://www.fawri.sa/" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-globe me-2"></i> **ফাওরি (Fawri):** দ্রুত আন্তর্জাতিক ট্রান্সফার।</a></div><p class="mt-3">টাকা পাঠানোর আগে সর্বদা বর্তমান বিনিময় হার যাচাই করুন।</p>`,
+                primaryAction: { text: "সৌদি কেন্দ্রীয় ব্যাংক (SAMA) দেখুন", href: "https://www.sama.gov.sa/" }
+            },
+            "utility_bill": {
+                title: "বিদ্যুৎ ও পানি বিল পরিশোধ",
+                icon: "fas fa-lightbulb",
+                html: `<p class="lead">অনলাইন বিল চেক ও পরিশোধের জন্য প্রয়োজনীয় লিঙ্ক:</p><p class="fw-bold">প্রয়োজনীয় পোর্টাল:</p><div class="list-group"><a href="https://www.se.com.sa/" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-bolt me-2"></i> **সৌদি ইলেক্ট্রিসিটি কোম্পানি (SEC):** বিদ্যুৎ বিল পরিশোধ ও অভিযোগ।</a><a href="https://www.nwc.com.sa/English/Pages/default.aspx" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-water me-2"></i> **ন্যাশনাল ওয়াটার কোম্পানি (NWC):** পানি বিল সংক্রান্ত সেবা।</a><a href="https://sadad.com/" target="_blank" class="list-group-item list-group-item-action"><i class="fas fa-money-check-dollar me-2"></i> **সাদাদ (SADAD) বিল পেমেন্ট প্ল্যাটফর্ম**</a></div><p class="mt-3">বিল পরিশোধের জন্য আপনার ব্যাংক অ্যাকাউন্টের মাধ্যমে সাদাদ (SADAD) ব্যবহার করতে পারেন।</p>`,
+                primaryAction: { text: "বিদ্যুৎ বিল পরিশোধ করুন", href: "https://www.se.com.sa/" }
+            },
+            
+            // ডিফল্ট কন্টেন্ট যুক্ত করার জন্য বাকি ডাটাগুলো নিচে তৈরি করা হবে
+        };
+        
+        // ডায়নামিকভাবে বাকি সার্ভিসগুলোর জন্য ডেটা তৈরি করা (পূর্বের লজিক)
+        const allServiceItems = document.querySelectorAll('.service-card');
+        allServiceItems.forEach(card => {
+            const id = card.getAttribute('data-service');
+            if (!serviceData[id]) { 
+                const title = card.querySelector('p').innerText;
+                const icon = card.querySelector('i').className;
+                const href = card.href;
+                
+                serviceData[id] = {
+                    title: title,
+                    icon: icon,
+                    html: `<p class="lead">এই পরিষেবাটির জন্য আরও বিস্তারিত তথ্য এখানে খুব শীঘ্রই যোগ করা হবে। বর্তমানে আপনি নিচের মূল লিঙ্কে যেতে পারেন।</p><p class="mt-4"><strong>মূল লিঙ্ক:</strong> <a href="${href}" target="_blank">${href.startsWith('tel:') ? 'কল করার জন্য নম্বর' : title}</a></p>`,
+                    primaryAction: {
+                        text: href.startsWith('tel:') ? "কল করুন" : "মূল সেবার পাতায় যান",
+                        href: href
+                    }
+                };
+            }
+        });
+
+
+        // ২. মোডাল চালু করার ফাংশন (Event Listener) - সংশোধিত
+        document.getElementById('serviceModal').addEventListener('show.bs.modal', function (event) {
+            
+            // মোডাল ট্রিগারকারী উপাদান (যা .service-item DIV)
+            const triggerElement = event.relatedTarget; 
+            if (!triggerElement) return;
+
+            // ট্রিগারকারী উপাদানের ভেতরের A ট্যাগ (.service-card)
+            const button = triggerElement.querySelector('.service-card');
+            if (!button) return;
+
+            const serviceId = button.getAttribute('data-service');
+            const data = serviceData[serviceId];
+
+            const modalTitle = document.getElementById('serviceModalLabel');
+            const modalBody = document.getElementById('modalBodyContent');
+            const primaryAction = document.getElementById('modalPrimaryAction');
+
+            if (data) {
+                // মোডাল হেডার সেট করা
+                modalTitle.innerHTML = `<i class="${data.icon} me-2"></i> ${data.title}`;
+                
+                // মোডাল বডি সেট করা
+                modalBody.innerHTML = data.html;
+
+                // প্রাইমারি অ্যাকশন বাটন সেট করা
+                if (data.primaryAction && data.primaryAction.href) {
+                    primaryAction.style.display = 'inline-block';
+                    primaryAction.textContent = data.primaryAction.text;
+                    primaryAction.href = data.primaryAction.href;
+                    
+                    // কল বাটন লজিক
+                    if (data.primaryAction.href.startsWith('tel:')) {
+                        primaryAction.classList.add('btn-danger', 'sos-button');
+                        primaryAction.classList.remove('btn-primary');
+                        primaryAction.onclick = () => logCall(serviceId);
+                    } else {
+                        primaryAction.classList.remove('btn-danger', 'sos-button');
+                        primaryAction.classList.add('btn-primary');
+                        primaryAction.onclick = null;
+                    }
+                } else {
+                    primaryAction.style.display = 'none';
+                }
+            } else {
+                modalTitle.textContent = "সার্ভিস বিস্তারিত পাওয়া যায়নি";
+                modalBody.innerHTML = "<p>দুঃখিত, এই সেবার বিস্তারিত তথ্য যোগ করা হয়নি।</p>";
+                primaryAction.style.display = 'none';
+            }
+        });
+
+        // A ট্যাগের ডিফল্ট অ্যাকশন বন্ধ করা হলো না।
+
+    </script>
+
+</body>
+</html>
